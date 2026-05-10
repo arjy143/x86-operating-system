@@ -13,12 +13,15 @@ void kernel_main()
     vga_clear();
     vga_print(0,0, "Welcome to the kernel.", WHITE_ON_BLACK);
 
-    memory_init();
-
     //ensure all memory regions are correctly registered
     memmap_supplement(); 
     
+    //use bump_alloc for pmm
     pmm_init();
+
+    //set up heap and use malloc from now on
+    memory_init();
+    
 
     idt_init();
     timer_init(100);    

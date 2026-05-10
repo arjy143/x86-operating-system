@@ -77,7 +77,7 @@ void pmm_init()
 
     uint32_t bitmap_size = total_frames / 8;
 
-    bitmap = (uint32_t*)malloc(bitmap_size);
+    bitmap = (uint32_t*)bump_alloc(bitmap_size);
 
     if (bitmap == 0)
     {
